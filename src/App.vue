@@ -1,41 +1,37 @@
 <template>
 <div>
   <TheHeader/>
+  <TabOptions/>
 
-<div class="choice">
-  <button @click="setSelectedComponent('stored-resource')">Stored Resource</button>
-  <button @click="setSelectedComponent('resource-form')">Add Resource</button>
-</div>
-
-
-  <keep-alive>
-    <component :is="selectedComponent"></component>  
-  </keep-alive>
+ 
 </div>
 </template>
 
 <script>
 import TheHeader from './components/TheHeader.vue';
-import StoredResource from './components/StoredResource.vue';
-import ResourceForm from './components/ResourceForm.vue'
+import TabOptions from './components/TabOptions.vue'
 
 export default {
 components: {
   TheHeader,
-  StoredResource,
-  ResourceForm
+  TabOptions
 },
 
 data() {
   return {
-    selectedComponent: 'stored-resource'
+    // selectedComponent: 'stored-resource'
+     
   };
 },
 
 methods: {
-  setSelectedComponent(cmp) {
-    this.selectedComponent = cmp;
-  }
+  // setSelectedComponent(cmp) {
+  //   this.selectedComponent = cmp;
+  // },
+
+  // deleteResource(id) {
+  //              this.resources = this.resources.filter(res => res.id !== id);
+  //          }
 }
 
 
@@ -43,7 +39,7 @@ methods: {
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -55,35 +51,6 @@ methods: {
 
 body{
   margin: 0;
-}
-
-.choice {
-  width: 50%;
-  margin: auto;
-  margin-top: 20px;
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 8px #ccc;
-}
-
-button{
-  background-color: lavenderblush;
-  padding: 16px;
-  border: 0;
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: rebeccapurple;
-}
-
-button:hover {
-  cursor: pointer;
-  background-color: aliceblue;
-}
-
-button:focus {
-  color: white;
-  background-color: rebeccapurple;
 }
 
 </style>

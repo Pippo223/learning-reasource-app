@@ -1,26 +1,41 @@
 <template>
-    <form>
+    <form @submit.prevent="submitData">
        <div>        
             <h3>Title</h3>
-            <input type="text">
+            <input type="text" ref="titleInput">
         </div>
 
         <div>
             <h3>Description</h3>
-            <textarea type="text"/>
+            <textarea type="text" ref="descInput"/>
         </div>
 
-       <div>        
+        <div>        
             <h3>Link</h3>
-            <input type="text">
+            <input type="text" ref="linkInput">
         </div>
     
-    <button>Add Resource</button>
-
-
+        <button type="submit">Add Resource</button>
 
     </form>
 </template>
+
+<script>
+export default {
+    inject: ['addResource'],
+
+    methods: {
+        submitData() {
+            const title = this.$refs.titleInput.value;
+            const desc = this.$refs.descInput.value;
+            const link = this.$refs.linkInput.value;
+
+            this.addResource(title, desc, link)
+        }
+        
+    },
+}
+</script>
 
 <style scoped>
 form {
@@ -49,6 +64,11 @@ button {
     font-weight: bold;
     text-align: left;
     margin-left: 15px;
+}
+
+button:hover {
+    cursor: pointer;
+    color: orange
 }
 
 h3 {
