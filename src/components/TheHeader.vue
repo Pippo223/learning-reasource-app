@@ -8,6 +8,7 @@
         color: white;
         padding:25px;
         margin: 0;
+        text-align: center;
     }
 
 
