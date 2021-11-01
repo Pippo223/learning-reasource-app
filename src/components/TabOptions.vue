@@ -10,7 +10,7 @@
         </div>
 
          <keep-alive>
-            <component :is="selectedComponent" @delete="deleteResource" ></component>  
+            <component :is="selectedComponent"></component>  
          </keep-alive>
     </div>
 </template>
@@ -47,7 +47,8 @@ export default {
 provide() {
     return {
         resources: this.storedResources,
-        addResource: this.addResource
+        addResource: this.addResource,
+        deleteResource: this.removeResource
     }
 },
 
@@ -75,6 +76,11 @@ methods: {
         };
         this.storedResources.unshift(newResource);
         this.selectedComponent = 'stored-resource';
+    },  
+
+    removeResource(resId) {
+        const resIndex = this.storedResources.findIndex(res => res.id === resId);
+        this.storedResources.splice(resIndex, 1);
     }
 
 }

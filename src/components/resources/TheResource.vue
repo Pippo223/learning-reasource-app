@@ -2,22 +2,24 @@
     <li>
         <div> 
             <h2>{{ title }} </h2>
-            <span @click="$emit('delete', id)">Delete</span>
+            <span @click="deleteResource(id)">Delete</span>
         </div>  
             <p>{{ description }}</p>
             <p><a :href="link">View Resource</a></p>
-    </li>
+    </li> 
         
 
 </template>
 
 <script>
-export default {
+export default { 
     //emits: ['delete'],
-    
-    props: ['title', 'description', 'link'],
+    props: ['id','title', 'description', 'link'],
 
-}
+    inject: ['deleteResource']
+
+    }
+
 </script> 
 
 <style scoped>

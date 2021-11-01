@@ -1,16 +1,16 @@
 <template>   
     
     <base-card>
-        <base-dialogue v-if="inputInvalid" title="Invalid Input">
-        <template #default>
-            <p>At least one input value is invalid</p>
-            <p>Please check and fill all input fields</p>
-        </template>
+        <base-dialogue v-if="inputInvalid" title="Invalid Input" @close="confirmError">
+            <template #default>
+                <p>At least one input value is invalid</p>
+                <p>Please check and fill all input fields</p>
+            </template>
         
-        <template #action>
-            <button @click="confirmError">OK</button>
-        </template>
-    </base-dialogue>
+            <template #actions>
+                <button @click="confirmError">Okay</button>
+            </template>
+        </base-dialogue>
 
         <form @submit.prevent="submitData">
        <div>        
@@ -61,6 +61,10 @@ export default {
             }
 
             this.addResource(title, desc, link)
+        },
+
+        confirmError() {
+            this.inputInvalid = false;
         }
         
     },

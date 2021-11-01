@@ -1,5 +1,6 @@
 <template>
-     <div>
+    <teleport to="body">
+     <div @click="$emit('close')">
     <dialog open> 
         <header>
             <slot name="header">
@@ -15,11 +16,12 @@
 
         <menu>
             <slot name="actions">
-
+                <button @click="$emit('close')">close</button>
             </slot>
         </menu>
     </dialog>
     </div>
+    </teleport>
 </template>
 
 <script>
@@ -30,7 +32,9 @@ export default {
             type: String,
             required: false
         }
-    }
+    },
+
+    emits: ['close']
 }
 </script>
 
